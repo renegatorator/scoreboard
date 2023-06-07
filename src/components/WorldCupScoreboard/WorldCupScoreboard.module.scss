@@ -4,4 +4,21 @@
   h1 {
     text-align: center;
   }
+
+  .Scoreboard {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+    table-layout: fixed;
+
+    td {
+      &:nth-child(2) {
+        text-align: center;
+        width: 60px;
+      }
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
 }

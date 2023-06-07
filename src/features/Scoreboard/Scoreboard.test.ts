@@ -54,11 +54,11 @@ describe("Update score", () => {
     const matches = scoreBoard.getMatches();
     expect(matches[0].homeTeam.name).toBe("France");
   });
+
   it("Matches with the same total score should be sorted by starting time (descending)", () => {
     const newScore: Score = { home: 12, away: 9 };
     scoreBoard.updateScore(1, newScore);
     const matches = scoreBoard.getMatches();
-    console.log("matches", matches);
     expect(matches[0].homeTeam.name).toBe("France");
   });
 });
@@ -69,6 +69,7 @@ describe("Finish match", () => {
     const matches = scoreBoard.getMatches();
     expect(matches.length).toBe(3);
   });
+
   it("Finishing a match should remove it from the active matches", () => {
     const matches = scoreBoard.getMatches();
     const match = matches.find((match) => match.homeTeam.name === "France");
