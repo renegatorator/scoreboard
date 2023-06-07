@@ -11,12 +11,12 @@ export default class Scoreboard {
   }
 
   // gets active matches
-  getMatches() {
+  getMatches = () => {
     return this.matches.filter((match) => !match.isFinished);
-  }
+  };
 
   // starts new match
-  startMatch(homeTeam: string, awayTeam: string) {
+  startMatch = (homeTeam: string, awayTeam: string) => {
     const match: Match = {
       id: -1,
       started: new Date(),
@@ -25,10 +25,10 @@ export default class Scoreboard {
       awayTeam: { name: awayTeam, score: 0 },
     };
     this.matches = this.sortMatches(this.matches.concat([match]));
-  }
+  };
 
   // finishes active match
-  finishMatch(matchId: number) {
+  finishMatch = (matchId: number) => {
     const updatedMatches = this.matches.map((match) => {
       if (match.id === matchId) {
         return { ...match, isFinished: true };
@@ -36,10 +36,10 @@ export default class Scoreboard {
       return match;
     });
     this.matches = this.sortMatches(updatedMatches);
-  }
+  };
 
   // updates score
-  updateScore(matchId: number, score: Score) {
+  updateScore = (matchId: number, score: Score) => {
     const updatedMatches = this.matches.map((match) => {
       if (match.id === matchId) {
         return {
@@ -51,10 +51,10 @@ export default class Scoreboard {
       return match;
     });
     this.matches = this.sortMatches(updatedMatches);
-  }
+  };
 
   // sorts matches
-  private sortMatches(matches: Match[]) {
+  private sortMatches = (matches: Match[]) => {
     return (
       matches
         // sort by date descending
@@ -72,5 +72,5 @@ export default class Scoreboard {
         // adding ids
         .map((match, idx) => ({ ...match, id: idx }))
     );
-  }
+  };
 }

@@ -1,18 +1,21 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import WorldCupScoreboard from "./WorldCupScoreboard";
+import Scoreboard from "../../features/Scoreboard/Scoreboard";
 
-render(<WorldCupScoreboard />);
+const scoreboard = new Scoreboard();
 
-describe("Title", () => {
-  const title = screen.getByRole("heading");
+render(<WorldCupScoreboard scoreboard={scoreboard} />);
 
-  it("Should display the title", () => {
-    expect(title).toBeInTheDocument();
+describe("Heading", () => {
+  const headings = screen.getAllByRole("heading");
+
+  it("Should display the main heading", () => {
+    expect(headings[0]).toBeInTheDocument();
   });
 
-  it("The title should say World Cup Scoreboard", () => {
-    expect(title.textContent).toBe("World Cup Scoreboard");
+  it("The main heading should say 'World Cup Scoreboard'", () => {
+    expect(headings[0]).toHaveTextContent("World Cup Scoreboard");
   });
 });
 

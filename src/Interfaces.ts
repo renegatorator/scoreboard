@@ -15,3 +15,8 @@ export interface Score {
   home: number;
   away: number;
 }
+
+export interface NewMatch {
+  home: string;
+  away: string;
+}

@@ -1,0 +1,22 @@
+.Wrapper {
+  text-align: center;
+  > h2 {
+    text-align: center;
+  }
+
+  > form {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: left;
+
+    > label {
+      display: block;
+    }
+
+    > input[type="submit"] {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+}
