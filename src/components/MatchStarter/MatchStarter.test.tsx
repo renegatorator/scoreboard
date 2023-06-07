@@ -40,16 +40,16 @@ describe("Start new match", () => {
   fireEvent.click(startButton);
 
   it("The new match should be in the matches array'", () => {
-    const newMatch = scoreboard.matches.find(
-      (match) => match.homeTeam.name === "Cuba"
-    );
+    const newMatch = scoreboard
+      .getMatches()
+      .find((match) => match.homeTeam.name === "Cuba");
     expect(newMatch?.awayTeam.name).toEqual("Fiji");
   });
 
   it("The new match should have a score of 0:0", () => {
-    const newMatch = scoreboard.matches.find(
-      (match) => match.homeTeam.name === "Cuba"
-    );
+    const newMatch = scoreboard
+      .getMatches()
+      .find((match) => match.homeTeam.name === "Cuba");
     expect(newMatch?.homeTeam.score).toEqual(0);
     expect(newMatch?.awayTeam.score).toEqual(0);
   });

@@ -3,7 +3,7 @@ import { defaultMatches } from "../../globalConstants";
 
 export default class Scoreboard {
   // holds all matches
-  matches: Match[] = [];
+  private matches: Match[] = [];
 
   constructor() {
     // assigns default matches

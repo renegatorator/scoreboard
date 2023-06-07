@@ -1,4 +1,4 @@
-import React, { FC, FormEvent, useState } from "react";
+import React, { ChangeEvent, FC, FormEvent, useState } from "react";
 import classes from "./MatchStarter.module.scss";
 import { NewMatch } from "../../Interfaces";
 
@@ -8,7 +8,7 @@ interface MatchStarterProps {
 
 const MatchStarter: FC<MatchStarterProps> = ({ startMatch }) => {
   const [formData, setFormData] = useState<NewMatch>({ home: "", away: "" });
-  const handleChange = (e: any) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleStartMatch = (e: FormEvent<HTMLFormElement>) => {
