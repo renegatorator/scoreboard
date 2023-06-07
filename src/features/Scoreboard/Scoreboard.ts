@@ -57,18 +57,18 @@ export default class Scoreboard {
   private sortMatches = (matches: Match[]) => {
     return (
       matches
-        // sort by date descending
-        .sort(
-          (matchA, matchB) =>
-            matchB.started.getTime() - matchA.started.getTime()
-        )
-        // sort by score descending
-        .sort(
-          (matchA, matchB) =>
-            matchB.homeTeam.score +
-            matchB.awayTeam.score -
-            (matchA.homeTeam.score + matchA.awayTeam.score)
-        )
+        .sort((matchA, matchB) => {
+          const totalA = matchA.homeTeam.score + matchA.awayTeam.score;
+          const totalB = matchB.homeTeam.score + matchB.awayTeam.score;
+
+          // sort by start time if total is the same
+          if (totalA === totalB) {
+            return matchB.started.getTime() - matchA.started.getTime();
+          }
+          // sort by score descending
+          return totalB - totalA;
+        })
+
         // adding ids
         .map((match, idx) => ({ ...match, id: idx }))
     );

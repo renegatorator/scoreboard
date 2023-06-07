@@ -44,7 +44,7 @@ const WorldCupScoreboard: FC<WorldCupScoreboardProps> = ({ scoreboard }) => {
   const handleScoreChange = (e: ChangeEvent<HTMLInputElement>) => {
     setScoreUpdateVal({
       ...scoreUpdateVal,
-      [e.target.name.replace("Score", "")]: e.target.value,
+      [e.target.name.replace("Score", "")]: Number(e.target.value),
     });
   };
   return (
