@@ -15,19 +15,23 @@ const WorldCupScoreboard: FC<WorldCupScoreboardProps> = ({ scoreboard }) => {
     home: 0,
     away: 0,
   });
+
   const startMatch = (newMatch: NewMatch) => {
     scoreboard.startMatch(newMatch.home, newMatch.away);
-    setMatches(scoreboard.getMatches());
+    storeChanges();
   };
+
   const finishMatch = (matchId: number) => {
     scoreboard.finishMatch(matchId);
-    setMatches(scoreboard.getMatches());
+    storeChanges();
   };
+
   const updateScore = (matchId: number) => {
     scoreboard.updateScore(matchId, scoreUpdateVal);
     resetSelection();
-    setMatches(scoreboard.getMatches());
+    storeChanges();
   };
+
   const selectMatch = (matchId: number, score: Score) => {
     setSelectedMatch(matchId);
     setScoreUpdateVal(score);
@@ -47,6 +51,13 @@ const WorldCupScoreboard: FC<WorldCupScoreboardProps> = ({ scoreboard }) => {
       [e.target.name.replace("Score", "")]: Number(e.target.value),
     });
   };
+
+  const storeChanges = () => {
+    const newMatches = scoreboard.getMatches();
+    setMatches(newMatches);
+    localStorage.setItem("scoreboard-matches", JSON.stringify(newMatches));
+  };
+
   return (
     <div className={classes.Wrapper}>
       <h1>World Cup Scoreboard</h1>

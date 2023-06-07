@@ -1,7 +1,8 @@
 import { Score } from "../../Interfaces";
+import { defaultMatches } from "../../globalConstants";
 import Scoreboard from "./Scoreboard";
 
-const scoreBoard = new Scoreboard();
+const scoreBoard = new Scoreboard(defaultMatches);
 
 describe("Get matches", () => {
   const matches = scoreBoard.getMatches();

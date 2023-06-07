@@ -3,8 +3,9 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import MatchStarter from "./MatchStarter";
 import Scoreboard from "../../features/Scoreboard/Scoreboard";
 import { NewMatch } from "../../Interfaces";
+import { defaultMatches } from "../../globalConstants";
 
-const scoreboard = new Scoreboard();
+const scoreboard = new Scoreboard(defaultMatches);
 const startMatch = (newMatch: NewMatch) => {
   scoreboard.startMatch(newMatch.home, newMatch.away);
 };

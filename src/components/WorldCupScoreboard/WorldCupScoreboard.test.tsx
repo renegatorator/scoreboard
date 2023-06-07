@@ -2,8 +2,9 @@ import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import WorldCupScoreboard from "./WorldCupScoreboard";
 import Scoreboard from "../../features/Scoreboard/Scoreboard";
+import { defaultMatches } from "../../globalConstants";
 
-const scoreboard = new Scoreboard();
+const scoreboard = new Scoreboard(defaultMatches);
 
 render(<WorldCupScoreboard scoreboard={scoreboard} />);
 

@@ -1,13 +1,12 @@
 import { Match, Score } from "../../Interfaces";
-import { defaultMatches } from "../../globalConstants";
 
 export default class Scoreboard {
   // holds all matches
   private matches: Match[] = [];
 
-  constructor() {
+  constructor(matches: Match[]) {
     // assigns default matches
-    this.matches = this.sortMatches(defaultMatches);
+    this.matches = this.sortMatches(matches);
   }
 
   // gets active matches
