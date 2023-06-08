@@ -1,4 +1,4 @@
-# Scoreboard React Application
+# World Cup Scoreboard
 
 This is a React application that implements a scoreboard. It allows you to start matches, update scores, finish matches, and displays a summary of matches in progress.
 
@@ -14,6 +14,9 @@ This is a React application that implements a scoreboard. It allows you to start
 - React: A JavaScript library for building user interfaces.
 - TypeScript: A statically-typed superset of JavaScript that compiles to plain JavaScript.
 - Create React App (CRA): A tool for bootstrapping React applications with a predefined setup.
+- Testing Library: A set of utilities for testing React components.
+- Jest: A JavaScript testing framework.
+- Sass: A preprocessor scripting language for CSS.
 
 ## How to Use
 
