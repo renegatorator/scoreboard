@@ -20,7 +20,7 @@ This is a React application that implements a scoreboard. It allows you to start
 
 ## How to Use
 
-1. Clone the repository: `git clone https://github.com/renegatorator/scoreboard`
+1. Clone the repository: `git clone https://github.com/renegatorator/scoreboard.git`
 2. Install dependencies: `cd scoreboard && npm install`
 3. Start the application: `npm start`
 4. Open your browser and visit `http://localhost:3000` to view the app.
