@@ -9,7 +9,9 @@ interface WorldCupScoreboardProps {
 }
 
 const WorldCupScoreboard: FC<WorldCupScoreboardProps> = ({ scoreboard }) => {
-  const [matches, setMatches] = useState<Match[]>(scoreboard.getMatches());
+  const [activeMatches, setActiveMatches] = useState<Match[]>(
+    scoreboard.getMatches()
+  );
   const [selectedMatch, setSelectedMatch] = useState<number>(-1);
   const [scoreUpdateVal, setScoreUpdateVal] = useState<Score>({
     home: 0,
@@ -54,71 +56,87 @@ const WorldCupScoreboard: FC<WorldCupScoreboardProps> = ({ scoreboard }) => {
 
   const storeChanges = () => {
     const newMatches = scoreboard.getMatches();
-    setMatches(newMatches);
+    setActiveMatches(newMatches);
     localStorage.setItem("scoreboard-matches", JSON.stringify(newMatches));
   };
 
   return (
     <div className={classes.Wrapper}>
       <h1>World Cup Scoreboard</h1>
-      <table className={classes.Scoreboard}>
-        <tbody>
-          {matches.map((match) => (
-            <tr key={match.id}>
-              <td>{match.homeTeam.name}</td>
-              {match.id === selectedMatch && (
-                <td>
-                  <input
-                    onChange={handleScoreChange}
-                    name="homeScore"
-                    type="number"
-                    value={scoreUpdateVal.home}
-                  />{" "}
-                  :{" "}
-                  <input
-                    onChange={handleScoreChange}
-                    name="awayScore"
-                    type="number"
-                    value={scoreUpdateVal.away}
-                  />
-                </td>
-              )}
-              {match.id !== selectedMatch && (
-                <td>{`${match.homeTeam.score} : ${match.awayTeam.score}`}</td>
-              )}
+      {/* Scoreboard */}
+      {activeMatches.length > 0 && (
+        <table className={classes.Scoreboard}>
+          <tbody>
+            {activeMatches.map((match) => (
+              <tr key={match.id}>
+                <td>{match.homeTeam.name}</td>
 
-              <td>{match.awayTeam.name}</td>
-              <td>
+                {/* Match score */}
                 {match.id !== selectedMatch && (
-                  <>
-                    <button
-                      onClick={() =>
-                        selectMatch(match.id, {
-                          home: match.homeTeam.score,
-                          away: match.awayTeam.score,
-                        })
-                      }
-                    >
-                      Update score
-                    </button>
-                    <button onClick={() => finishMatch(match.id)}>
-                      Finish
-                    </button>
-                  </>
+                  <td>{`${match.homeTeam.score} : ${match.awayTeam.score}`}</td>
                 )}
+                {/* Match score update */}
                 {match.id === selectedMatch && (
-                  <>
-                    <button onClick={() => updateScore(match.id)}>
-                      Save score
-                    </button>
-                    <button onClick={() => resetSelection()}>Discard</button>
-                  </>
+                  <td>
+                    <input
+                      onChange={handleScoreChange}
+                      name="homeScore"
+                      type="number"
+                      value={scoreUpdateVal.home}
+                    />{" "}
+                    :{" "}
+                    <input
+                      onChange={handleScoreChange}
+                      name="awayScore"
+                      type="number"
+                      value={scoreUpdateVal.away}
+                    />
+                  </td>
                 )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+
+                <td>{match.awayTeam.name}</td>
+                <td>
+                  {/* Match buttons */}
+                  {match.id !== selectedMatch && (
+                    <>
+                      <button
+                        onClick={() =>
+                          selectMatch(match.id, {
+                            home: match.homeTeam.score,
+                            away: match.awayTeam.score,
+                          })
+                        }
+                      >
+                        Update score
+                      </button>
+                      <button onClick={() => finishMatch(match.id)}>
+                        Finish
+                      </button>
+                    </>
+                  )}
+                  {/* Match buttons update */}
+                  {match.id === selectedMatch && (
+                    <>
+                      <button onClick={() => updateScore(match.id)}>
+                        Save score
+                      </button>
+                      <button onClick={() => resetSelection()}>Discard</button>
+                    </>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+      {/* No active matches */}
+      {activeMatches.length === 0 && (
+        <div className={classes.NoMatches}>
+          <p>No matches are currently in progress.</p>
+          <p>Please start a new match.</p>
+        </div>
+      )}
+
       <MatchStarter startMatch={startMatch} />
     </div>
   );
