@@ -34,10 +34,10 @@ This is a React application that implements a scoreboard. It allows you to start
 
 2. Update the score of a match:
 
-- Each match in progress has an "Update score" button next to it.
-  - Click the Update score button to turn scores into input fields.
-  - Enter the new home score and away score for a match in the input fields.
-  - Click the "Save score" button to save the changes.
+   - Each match in progress has an "Update score" button next to it.
+   - Click the Update score button to turn scores into input fields.
+   - Enter the new home score and away score for a match in the input fields.
+   - Click the "Save score" button to save the changes.
 
 3. Finish a match:
 
