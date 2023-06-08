@@ -35,6 +35,11 @@
 
       > input {
         width: 16px;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          display: none;
+        }
       }
     }
   }
