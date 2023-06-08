@@ -29,7 +29,7 @@ describe("Start new match", () => {
   const awayField: HTMLInputElement = screen.getByLabelText("Away team name");
   expect(homeField).toBeInTheDocument();
   expect(awayField).toBeInTheDocument();
-  const startButton = screen.getByDisplayValue("Start");
+  const startButton = screen.getByDisplayValue("Start match");
 
   it("Input field values should be empty strings", () => {
     expect(homeField).toHaveValue("");

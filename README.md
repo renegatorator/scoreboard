@@ -24,7 +24,34 @@ This is a React application that implements a scoreboard. It allows you to start
 
 ## Usage
 
-This is still in the early stage of development. Not much to do yet.
+1. Start a new match:
+
+   - Enter the names of the home team and away team in the "Start New Match" section.
+   - Click the "Start match" button to add the match to the scoreboard.
+
+2. Update the score of a match:
+
+- Each match in progress has an "Update score" button next to it.
+  - Click the Update score button to turn scores into input fields.
+  - Enter the new home score and away score for a match in the input fields.
+  - Click the "Save score" button to save the changes.
+
+3. Finish a match:
+
+   - Each match in progress has a "Finish" button next to it.
+   - Click the "Finish" button to remove the match from the scoreboard.
+
+4. Get the summary of matches in progress:
+
+   - The matches are displayed in the "World Cup Scoreboard" section.
+   - Matches are sorted by total score (descending).
+   - If multiple matches have the same total score, the most recently started match is placed higher.
+
+5. Notes:
+   - This application stores matches in the local storage in order to preserve user changes.
+   - This application has minimal styling. This intentional design choice aligns with the project requirements.
+
+Feel free to explore the application and experiment with different scores and matches!
 
 ## Available Scripts
 

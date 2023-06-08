@@ -5,8 +5,15 @@ export default class Scoreboard {
   private matches: Match[] = [];
 
   constructor(matches: Match[]) {
+    // turns started string into Date
+    const formattedMatches = matches.map((match) =>
+      typeof match.started === "string"
+        ? { ...match, started: new Date(match.started) }
+        : match
+    );
+
     // assigns default matches
-    this.matches = this.sortMatches(matches);
+    this.matches = this.sortMatches(formattedMatches);
   }
 
   // gets active matches

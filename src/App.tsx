@@ -8,7 +8,7 @@ function App() {
   // otherwise default matches are used
   const localMatches = localStorage.getItem("scoreboard-matches");
   let matches = defaultMatches;
-  if (localMatches) {
+  if (localMatches?.length) {
     matches = JSON.parse(localMatches);
   }
   const scoreboard = new Scoreboard(matches);

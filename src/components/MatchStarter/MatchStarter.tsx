@@ -35,10 +35,22 @@ const MatchStarter: FC<MatchStarterProps> = ({ startMatch }) => {
       <h2>Start a new match</h2>
       <form onSubmit={handleStartMatch}>
         <label htmlFor="home">Home team name</label>
-        <input type="text" id="home" name="home" onChange={handleChange} />
+        <input
+          type="text"
+          id="home"
+          name="home"
+          onChange={handleChange}
+          autoComplete="off"
+        />
         <label htmlFor="away">Away team name</label>
-        <input type="text" id="away" name="away" onChange={handleChange} />
-        <input disabled={submitDisabled} type="submit" value="Start" />
+        <input
+          type="text"
+          id="away"
+          name="away"
+          onChange={handleChange}
+          autoComplete="off"
+        />
+        <input disabled={submitDisabled} type="submit" value="Start match" />
       </form>
     </div>
   );
